@@ -17,7 +17,7 @@ public class Main {
         String[] arrayString = {"Hello", "Java","SpongeBob", "Lusik", "Elf"};
         Double[] realNumbers = {1.2,0.009,2.8,-1.98,-0.991};
 
-        Person[] person = new Person[2];
+        Person[] person = new Person[4];
 
         for (int i = 0; i < person.length; i++) {
             person[i] = new Person();
@@ -58,8 +58,29 @@ public class Main {
         //SECOND TASK
         System.out.println("\n\nSecond task : ");
 
+
+        //Comparing name lengths
         int b = person[0].compareTo(person[1]);
         bigger(b);
+
+        //Comparing ages
+        System.out.println("\nComparing ages : ");
+        int q = person[0].compareAge(person[1]);
+        if (q == 1) {
+            System.out.println(person[0].getName()+" is older!");
+        } else if (q == 0) {
+            System.out.println("Both r at the same age!");
+        } else {
+            System.out.println(person[1].getName()+" is older!");
+        }
+
+        //Sorting the array based on the age
+        sortAge(person);
+        System.out.println("\nAge-Sorted array : ");
+        for (int s = 0; s < person.length; s++) {
+            person[s].toString();
+        }
+
     }
 
     private static <T> void swap(T thing[], int i, int j) {
@@ -104,6 +125,33 @@ public class Main {
             System.out.println("Both names r equal in length!");
         } else {
             System.out.println("The second name is longer than the first name!");
+        }
+    }
+
+    public static void sortAge(Person[] array) {
+        int i = 0;
+        int a = 0;
+        int j = a + 1;
+
+        int t = 1;
+
+        while(i < Math.pow(array.length - 1,2)) {
+
+            int q = array[j].compareAge(array[a]);
+            if (q == -1) {
+                swap(array,a,j);
+                System.out.println("Take"+t+" | Swapped "+a+" & "+j);
+            }
+
+            if (a == array.length - 2) {
+                a = 0;
+                j = a + 1;
+                t++;
+            } else {
+                a++;
+                j++;
+            }
+            i++;
         }
     }
 }

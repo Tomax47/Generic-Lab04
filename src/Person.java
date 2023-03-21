@@ -82,5 +82,18 @@ public class Person implements Comparable<Person>{
         return b;
     }
 
+    public int compareAge(Person person) {
+        int firstAge = getAge();
+        int secAge = person.getAge();
+        int b = firstAge - secAge;
+        if (b > 0) {
+            return 1;
+        } else if (b == 0) {
+            return 0;
+        } else {
+            return -1;
+        }
+
+    }
 
 }
